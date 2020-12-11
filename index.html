@@ -17,6 +17,16 @@
             s.src = 'https://pubres.aihecong.com/hecong.js';
             if (d.head) d.head.appendChild(s);
         })(document, window, '_AIHECONG');
-        _AIHECONG('ini',{ entId : 10003 });
+        function getVars(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            var res = {}
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                res[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+            }
+            return res;
+        }
+        _AIHECONG('ini', getVars());
     </script>
 </html>
